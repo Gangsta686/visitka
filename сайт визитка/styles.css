@@ -45,6 +45,50 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.03) inset;
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card > *,
+.skills li,
+.section > *,
+.contact-item,
+.doc-list li {
+  opacity: 0;
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+.card > :nth-child(1) { animation-delay: 0.14s; }
+.card > :nth-child(2) { animation-delay: 0.26s; }
+.card > :nth-child(3) { animation-delay: 0.38s; }
+.card > :nth-child(4) { animation-delay: 0.5s; }
+.card > :nth-child(5) { animation-delay: 0.62s; }
+
+.skills li:nth-child(1) { animation-delay: 0.74s; }
+.skills li:nth-child(2) { animation-delay: 0.84s; }
+.skills li:nth-child(3) { animation-delay: 0.94s; }
+.skills li:nth-child(4) { animation-delay: 1.03s; }
+.skills li:nth-child(5) { animation-delay: 1.13s; }
+
+.section:nth-of-type(1) > * { animation-delay: 1.22s; }
+.section:nth-of-type(1) .contact-item:nth-child(1) { animation-delay: 1.32s; }
+.section:nth-of-type(1) .contact-item:nth-child(2) { animation-delay: 1.42s; }
+
+.section:nth-of-type(2) > * { animation-delay: 1.54s; }
+.section:nth-of-type(2) .doc-list li:nth-child(1) { animation-delay: 1.63s; }
+.section:nth-of-type(2) .doc-list li:nth-child(2) { animation-delay: 1.73s; }
+.section:nth-of-type(2) .doc-list li:nth-child(3) { animation-delay: 1.82s; }
+
+.section:nth-of-type(3) > * { animation-delay: 1.94s; }
+.section:nth-of-type(4) > * { animation-delay: 2.06s; }
+
 .avatar {
   width: 4.5rem;
   height: 4.5rem;
@@ -97,6 +141,68 @@ h1 {
   color: var(--text);
 }
 
+.contact-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: fit-content;
+  font-size: 0.95rem;
+  transition: transform 0.25s ease, opacity 0.25s ease, color 0.25s ease;
+}
+
+.contact-item:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.contact-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, filter 0.28s ease;
+}
+
+.contact-icon svg {
+  width: 1rem;
+  height: 1rem;
+  fill: #ffffff;
+  transition: transform 0.28s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: translateY(-2px) scale(1.08);
+  filter: brightness(1.08);
+}
+
+.contact-item:hover .contact-icon.telegram {
+  box-shadow: 0 0 0 3px rgba(55, 174, 226, 0.2), 0 8px 20px rgba(30, 150, 200, 0.35);
+}
+
+.contact-item:hover .contact-icon.github {
+  box-shadow: 0 0 0 3px rgba(93, 107, 122, 0.2), 0 8px 20px rgba(13, 17, 23, 0.45);
+}
+
+.contact-item:hover .contact-icon svg {
+  transform: scale(1.08);
+}
+
+.contact-icon.telegram {
+  background: linear-gradient(135deg, #37aee2, #1e96c8);
+}
+
+.contact-icon.github {
+  background: linear-gradient(135deg, #2d333b, #0d1117);
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -104,6 +210,25 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.swagger-btn {
+  display: inline-block;
+  padding: 0.55rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(91, 159, 212, 0.4);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.swagger-btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(91, 159, 212, 0.22);
+  background: rgba(91, 159, 212, 0.22);
 }
 
 .skills {
@@ -131,4 +256,15 @@ a:hover {
   color: var(--text);
   line-height: 1.6;
   font-size: 0.95rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card > *,
+  .skills li,
+  .section > *,
+  .contact-item,
+  .doc-list li {
+    opacity: 1;
+    animation: none;
+  }
 }
